@@ -1,37 +1,32 @@
 <template>
   <div>
-    <p v-if="error">{{ error }}</p>
+    <h3 v-if="error">{{ error }}</h3>
+
     <template v-else>
       <template v-if="sortedUsers.length">
-        <table>
-          <thead>
-            <tr>
-              <th v-for="heading in tableHeadings" :key="heading.key">
-                <button class="tableHeading" @click="headingClickHandler(heading.key)">
-                  {{ heading.value }}
+        <DataTable>
+          <template #table-heading>
+            <TableHeading
+              :headings="tableHeadings"
+              :selectedheading="store.filters.sortByKey"
+              :isSortAsc="store.filters.isSortAsc"
+              @headingClicked="headingClickHandler"
+            />
+          </template>
 
-                  <span
-                    v-if="store.filters.sortByKey === heading.key"
-                    class="indicator"
-                    :class="[store.filters.isSortAsc ? 'asc' : 'desc']"
-                  >
-                  </span>
-                </button>
-              </th>
-            </tr>
-          </thead>
-
-          <tbody>
+          <template #table-body>
             <template v-for="user in sortedUsers" :key="user.id">
-              <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.name }}</td>
-                <td>{{ user.age }}</td>
-                <td>{{ user.isPolloConHierbasLover ? 'Pollo con Hierbas' : 'Pollo Piri Piri' }}</td>
-              </tr>
+              <TableRow
+                :values="[
+                  user.id,
+                  user.name,
+                  user.age,
+                  user.isPolloConHierbasLover ? 'Pollo con Hierbas' : 'Pollo Piri Piri',
+                ]"
+              />
             </template>
-          </tbody>
-        </table>
+          </template>
+        </DataTable>
       </template>
 
       <h3 v-else>No user with selected criterials. Try a different one.</h3>
@@ -44,6 +39,9 @@ import type { ClasificatedUser } from '@/adapters/addUserClasification'
 import { useFetchUsers } from '@/composables/useFetchUsers'
 import { store } from '@/stores/filters'
 import { computed } from 'vue'
+import DataTable from '../DataTable/DataTable.vue'
+import TableRow from '../DataTable/TableRow.vue'
+import TableHeading from '../DataTable/TableHeading.vue'
 
 interface TableHeadings {
   key: keyof ClasificatedUser
@@ -102,92 +100,14 @@ const sortedUsers = computed(() => {
   return sortedList
 })
 
-const headingClickHandler = (key: keyof ClasificatedUser) => {
+const headingClickHandler = (key: string) => {
   store.setSortByKey(key)
   store.setIsSortAsc()
 }
 </script>
 
 <style scoped>
-table {
-  border: 1px solid #fff;
-  border-radius: 0.5rem;
-  margin-top: 1rem;
-}
-
-thead th button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  border: none;
-  padding: 0.5rem 1rem;
-  background-color: transparent;
-  color: #fff;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-.indicator {
-  position: absolute;
-  bottom: 0;
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  content: '';
-  z-index: 1;
-}
-.asc {
-  border-bottom: 5px solid #fff;
-}
-.desc {
-  border-top: 5px solid #fff;
-  bottom: -5px;
-}
-
-td,
-th {
-  padding: 0.5rem 2rem;
-  text-align: center;
-}
-
-table thead tr,
-table tbody tr {
-  position: relative;
-}
-
-table thead tr::after,
-table tbody tr:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background: #cccccc1c;
-  height: 1px;
-}
-
-table thead tr::after {
-  background: #ececec;
-  height: 1px;
-}
-
 h3 {
-  margin-top: 1rem;
   text-align: center;
-}
-
-@media (max-width: 768px) {
-  td,
-  th {
-    padding: 0.3rem;
-  }
-
-  thead th button {
-    font-size: 14px;
-  }
 }
 </style>
