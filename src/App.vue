@@ -1,21 +1,21 @@
-<script setup lang="ts">
-import TableUtils from './components/Filters/TableUtils.vue'
-import UsersList from './components/UsersList/UsersList.vue'
-</script>
-
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" />
+    <img alt="Honest Greens logo" class="logo" src="./assets/logo.svg" />
   </header>
 
   <main>
     <div class="wrapper">
       <h1>Users Classification</h1>
-      <TableUtils />
+      <FilterControls />
       <UsersList />
     </div>
   </main>
 </template>
+
+<script setup lang="ts">
+import FilterControls from './components/Filters/FilterControls.vue'
+import UsersList from './components/UsersList/UsersList.vue'
+</script>
 
 <style scoped>
 header {

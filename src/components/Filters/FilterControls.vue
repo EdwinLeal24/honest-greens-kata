@@ -18,9 +18,12 @@
       <input type="text" v-model="store.filters.name" placeholder="Type a name" />
     </div>
 
-    <button @click.stop="store.setIsSortAsc">
-      <IconSort class="sortIcon" :class="{ turnedIcon: !store.filters.isSortAsc }" />
-    </button>
+    <div>
+      <p>Sort</p>
+      <button @click.stop="store.setIsSortAsc">
+        <IconSort class="sortIcon" :class="{ turnedIcon: !store.filters.isSortAsc }" />
+      </button>
+    </div>
   </div>
 </template>
 
