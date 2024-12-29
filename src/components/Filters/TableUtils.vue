@@ -19,7 +19,7 @@
     </div>
 
     <button @click.stop="store.setIsSortAsc">
-      <IconEcosystem class="sortIcon" :class="{ turnedIcon: !store.filters.isSortAsc }" />
+      <IconSort class="sortIcon" :class="{ turnedIcon: !store.filters.isSortAsc }" />
     </button>
   </div>
 </template>
@@ -27,7 +27,7 @@
 <script setup lang="ts">
 import { store } from '@/stores/filters'
 import DropdownButton from '../DropdownButton/DropdownButton.vue'
-import IconEcosystem from '../icons/IconEcosystem.vue'
+import IconSort from '../icons/IconSort.vue'
 
 const ClassificationOptions = [
   { key: 'name', value: 'Name' },
