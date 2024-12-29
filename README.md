@@ -38,4 +38,4 @@ npm run lint
 - [x] Create UI components
   - [x] Create table to display user data
   - [x] Create filters components (dropdown, search field, desc/asc button)
-- [ ] Add sort/search functionality
+- [x] Add sort/search functionality
