@@ -12,7 +12,7 @@
 
 <style scoped>
 table {
-  border: 1px solid #fff;
+  border: 1px solid var(--hg-c-white);
   border-radius: 0.5rem;
 }
 </style>

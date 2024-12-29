@@ -61,7 +61,7 @@ window.addEventListener('click', (event) => {
 
 <style scoped>
 .dropdown {
-  background-color: #fff;
+  background-color: var(--hg-c-white);
   border-radius: 0.5rem;
   position: relative;
 }
@@ -100,7 +100,7 @@ ul {
   flex-direction: column;
   opacity: 1;
   position: absolute;
-  background: #fff;
+  background: var(--hg-c-white);
   border-radius: 0.5rem;
   z-index: 1;
 }

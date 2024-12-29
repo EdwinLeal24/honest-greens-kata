@@ -58,7 +58,7 @@ const loverOfSelectedHandle = (optionSelected: string) => {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  border: 1px solid #fff;
+  border: 1px solid var(--hg-c-white);
   padding: 1rem;
   display: flex;
   gap: 2rem;
@@ -86,7 +86,7 @@ button {
   border: none;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  background-color: #fff;
+  background-color: var(--hg-c-white);
   cursor: pointer;
   height: fit-content;
 }

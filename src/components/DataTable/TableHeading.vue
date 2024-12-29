@@ -60,7 +60,7 @@ th button {
   border: none;
   padding: 0.5rem 1rem;
   background-color: transparent;
-  color: #fff;
+  color: var(--hg-c-white);
   cursor: pointer;
   font-size: 1rem;
   font-weight: bold;
@@ -83,11 +83,11 @@ th {
 }
 
 .asc {
-  border-bottom: 5px solid #fff;
+  border-bottom: 5px solid var(--hg-c-white);
 }
 
 .desc {
-  border-top: 5px solid #fff;
+  border-top: 5px solid var(--hg-c-white);
   bottom: -5px;
 }
 
